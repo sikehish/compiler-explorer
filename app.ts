@@ -29,7 +29,6 @@ import process from 'process';
 import url from 'url';
 
 import * as Sentry from '@sentry/node';
-import bodyParser from 'body-parser';
 import compression from 'compression';
 import express from 'express';
 import fs from 'fs-extra';
@@ -848,7 +847,7 @@ async function main() {
                 ),
             );
         })
-        .use(bodyParser.json({limit: ceProps('bodyParserLimit', maxUploadSize)}))
+        .use(express.json({limit: ceProps('bodyParserLimit', maxUploadSize)}))
         .use(siteTemplateController.createRouter())
         .use(sourceController.createRouter())
         .use(assemblyDocumentationController.createRouter())

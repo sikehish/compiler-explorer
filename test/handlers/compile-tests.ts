@@ -51,7 +51,7 @@ describe('Compiler tests', () => {
         const formParser = bodyParser.urlencoded({extended: false});
 
         app = express();
-        app.use(bodyParser.json());
+        app.use(express.json());
 
         app.post('/noscript/compile', formParser, compileHandler.handle.bind(compileHandler));
         app.post('/:compiler/compile', textParser, compileHandler.handle.bind(compileHandler));
